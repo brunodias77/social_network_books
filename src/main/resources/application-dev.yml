@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/book_social_network  # URL de conexão ao banco de dados PostgreSQL
+    username: username  # Nome de usuário do banco de dados
+    password: password  # Senha do banco de dados
+    driver-class-name: org.postgresql.Driver  # Driver JDBC do PostgreSQL
+  jpa:
+    hibernate:
+      ddl-auto: update  # Atualiza automaticamente o esquema do banco de dados
+    show-sql: false  # Desativa a exibição das instruções SQL no console
+    properties:
+      hibernate:
+        format_sql: true  # Formata o SQL gerado para facilitar a leitura
+    database: postgresql  # Especifica que o banco de dados utilizado é o PostgreSQL
+    database-platform: org.hibernate.dialect.PostgreSQLDialect  # Dialeto do Hibernate para PostgreSQL
+  mail:
+    host: localhost  # Host do servidor de email (MailDev no caso)
+    port: 1025  # Porta do servidor de email (MailDev)
+    username: ali  # Nome de usuário do servidor de email
+    password: ali  # Senha do servidor de email
+    properties:
+      mail:
+        smtp:
+          trust: "*"  # Confia em qualquer host SMTP
+        auth: true  # Ativa autenticação SMTP
+        starttls:
+          enabled: true  # Ativa STARTTLS
+        connectiontimeout: 5000  # Tempo de conexão SMTP (em milissegundos)
+        timeout: 3000  # Tempo limite SMTP (em milissegundos)
+        writetimeout: 5000  # Tempo limite de escrita SMTP (em milissegundos)
+
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970  # Chave secreta para assinatura JWT
+      expiration: 86400000  # Tempo de expiração do token JWT (em milissegundos, aqui é 1 dia)
+      refresh-token:
+        expiration: 604800000  # Tempo de expiração do refresh token (em milissegundos, aqui é 7 dias)
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account  # URL de ativação de conta no frontend
+  file:
+    uploads:
+      photos-output-path: ./uploads  # Caminho para o diretório de upload de fotos
+
+server:
+  port: 8088  # Porta em que o servidor Spring Boot irá rodar

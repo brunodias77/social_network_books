@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev  # Define o perfil ativo como 'dev' (desenvolvimento)
+  servlet:
+    multipart:
+      max-file-size: 50MB  # Define o tamanho máximo de arquivo para upload como 50MB
+
+springdoc:
+  default-produces-media-type: application/json  # Define o tipo de mídia padrão como application/json para a documentação da API
+
+server:
+  servlet:
+    context-path: /api/v1/  # Define o caminho de contexto do servlet como /api/v1/

@@ -1,0 +1,50 @@
+services:
+  # Configuração do serviço PostgreSQL
+  postgres:
+    container_name: postgres-sql-bsn  # Nome do contêiner
+    image: postgres  # Imagem do Docker a ser utilizada
+    environment:
+      POSTGRES_USER: username  # Nome de usuário do PostgreSQL
+      POSTGRES_PASSWORD: password  # Senha do PostgreSQL
+      PGDATA: /var/lib/postgresql/data  # Diretório onde os dados do PostgreSQL serão armazenados
+      POSTGRES_DB: book_social_network  # Nome do banco de dados a ser criado
+    volumes:
+      - postgres:/data/postgres  # Volume para persistir os dados do PostgreSQL
+    ports:
+      - 5432:5432  # Mapeamento de porta: porta 5432 do contêiner para a porta 5432 da máquina host
+    networks:
+      - spring-demo  # Rede na qual o contêiner está conectado
+    restart: unless-stopped  # Política de reinicialização: reinicia o contêiner a menos que seja parado manualmente
+
+  # Configuração do serviço MailDev
+  mail-dev:
+    container_name: mail-dev-bsn  # Nome do contêiner
+    image: maildev/maildev  # Imagem do Docker a ser utilizada
+    ports:
+      - 1080:1080  # Mapeamento de porta: porta 1080 do contêiner para a porta 1080 da máquina host (interface web)
+      - 1025:1025  # Mapeamento de porta: porta 1025 do contêiner para a porta 1025 da máquina host (SMTP)
+
+# Configuração da rede
+networks:
+  spring-demo:
+    driver: bridge  # Tipo de driver da rede (bridge)
+
+# Configuração do volume
+volumes:
+  postgres:
+    driver: local  # Tipo de driver do volume (local)
+
+
+# Volumes no Docker:
+# Volumes são usados para persistir dados gerados e utilizados pelos contêineres.
+# Eles permitem que os dados sejam armazenados fora do ciclo de vida do contêiner,
+# o que significa que os dados não serão perdidos quando o contêiner for removido.
+# No exemplo acima, um volume chamado 'postgres' está sendo utilizado para armazenar
+# os dados do banco de dados PostgreSQL.
+
+# Redes no Docker:
+# Redes no Docker permitem que os contêineres se comuniquem entre si.
+# No exemplo acima, uma rede chamada 'spring-demo' é criada com o driver 'bridge'.
+# O driver 'bridge' é usado para criar uma rede privada interna onde os contêineres podem
+# se comunicar, mas não é acessível diretamente de fora do host Docker.
+# Isso facilita a comunicação segura entre contêineres que fazem parte da mesma aplicação.
