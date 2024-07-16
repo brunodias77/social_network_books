@@ -18,7 +18,6 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @EnableWebSecurity // Habilita a segurança baseada em web do Spring Security
 @RequiredArgsConstructor // Gera um construtor com argumentos para todos os campos final na classe
 @EnableMethodSecurity(securedEnabled = true) // Habilita a segurança baseada em método com a anotação @Secured
-
 public class SecurityConfig {
 
     private final JwtFilter jwtAuthFilter; // Filtro JWT personalizado para autenticação via token JWT

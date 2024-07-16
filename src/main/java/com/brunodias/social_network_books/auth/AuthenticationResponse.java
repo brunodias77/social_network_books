@@ -1,2 +1,12 @@
-package com.brunodias.social_network_books.auth;public class AuthenticationResponse {
+package com.brunodias.social_network_books.auth;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Builder
+public class AuthenticationResponse {
+    private String token;
 }

@@ -10,7 +10,6 @@ import java.util.Optional;
 
 // Implementa a interface AuditorAware<T> do Spring Data para fornecer o auditor atual
 public class ApplicationAuditAware implements AuditorAware<Integer> {
-
     // Método para obter o auditor atual (ID do usuário)
     @Override
     public Optional<Integer> getCurrentAuditor() {

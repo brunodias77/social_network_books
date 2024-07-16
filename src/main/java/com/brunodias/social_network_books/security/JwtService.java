@@ -37,6 +37,7 @@ public class JwtService {
 
     // Gera um token JWT para um usuário com base nos detalhes do usuário
     public String generateToken(UserDetails userDetails) {
+
         return generateToken(new HashMap<>(), userDetails);
     }
 
