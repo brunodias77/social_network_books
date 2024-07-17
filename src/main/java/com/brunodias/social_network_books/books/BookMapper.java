@@ -1,6 +1,7 @@
 package com.brunodias.social_network_books.books;
 
 import com.brunodias.social_network_books.files.FileUtils;
+import com.brunodias.social_network_books.histories.BookTransactionHistory;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -36,16 +37,16 @@ public class BookMapper {
     }
 
     // Converte um objeto BookTransactionHistory em um objeto BorrowedBookResponse
-//    public BorrowedBookResponse toBorrowedBookResponse(BookTransactionHistory history) {
-//        return BorrowedBookResponse.builder()
-//                .id(history.getBook().getId())           // Define o ID do livro emprestado
-//                .title(history.getBook().getTitle())     // Define o título do livro emprestado
-//                .authorName(history.getBook().getAuthorName()) // Define o nome do autor do livro emprestado
-//                .isbn(history.getBook().getIsbn())       // Define o ISBN do livro emprestado
-//                .rate(history.getBook().getRate())       // Define a avaliação do livro emprestado
-//                .returned(history.isReturned())          // Define se o livro foi devolvido
-//                .returnApproved(history.isReturnApproved()) // Define se a devolução do livro foi aprovada
-//                .build();                               // Constrói o objeto BorrowedBookResponse
-//    }
+    public BorrowedBookResponse toBorrowedBookResponse(BookTransactionHistory history) {
+        return BorrowedBookResponse.builder()
+                .id(history.getBook().getId())           // Define o ID do livro emprestado
+                .title(history.getBook().getTitle())     // Define o título do livro emprestado
+                .authorName(history.getBook().getAuthorName()) // Define o nome do autor do livro emprestado
+                .isbn(history.getBook().getIsbn())       // Define o ISBN do livro emprestado
+                .rate(history.getBook().getRate())       // Define a avaliação do livro emprestado
+                .returned(history.isReturned())          // Define se o livro foi devolvido
+                .returnApproved(history.isReturnApproved()) // Define se a devolução do livro foi aprovada
+                .build();                               // Constrói o objeto BorrowedBookResponse
+    }
 }
 
